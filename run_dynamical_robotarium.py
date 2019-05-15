@@ -271,7 +271,7 @@ def main():
                 print(prediction.shape)
                 goal_velocities = np.squeeze(np.swapaxes(prediction,2,3)[:,i-8,2:,:])
 
-            print('Step ' %(i+1))
+            print('Step %d' %(i+1))
             goal_points = np.squeeze(np.swapaxes(test_data,2,3)[:,i,:2,:])
             #goal_velocities = np.squeeze(np.swapaxes(prediction,2,3)[:,:,2:,:])
 
@@ -304,15 +304,15 @@ def main():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-dir', type=str, default ='data',
+    parser.add_argument('--data-dir', type=str, default ='gnn_robotarium_chaser/data',
                         help='data directory')
     parser.add_argument('--data-transpose', type=int, nargs=4, default=None,
                         help='axes for data transposition')
     parser.add_argument('--data-size', type=int, default=None,
                         help='optional data size cap to use for training')
-    parser.add_argument('--config', type=str, default='config_dynamical.json',
+    parser.add_argument('--config', type=str, default='gnn_robotarium_chaser/config_dynamical.json',
                         help='model config file')
-    parser.add_argument('--log-dir', type=str, default = 'log',
+    parser.add_argument('--log-dir', type=str, default = 'gnn_robotarium_chaserlog',
                         help='log directory')
     parser.add_argument('--train-steps', type=int, default=1000,
                         help='number of training steps')
