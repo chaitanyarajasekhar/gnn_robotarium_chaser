@@ -177,7 +177,7 @@ def main():
 
             prediction = np.swapaxes(prediction, 0, 1)
 
-            print(f'GNN execution time = {- curr_time + time.time()}')
+            print('GNN execution time = %f' %(- curr_time + time.time()))
 
 
         #print(prediction.shape)
@@ -206,8 +206,8 @@ def main():
 
         time.sleep(0.03)
 
-        print(f'Step {1}')
-        print(f'error = {np.linalg.norm(r.get_poses()[:2,:] - initial_goal_points)}')
+        print('Step 1')
+        print('error = %f' %(np.linalg.norm(r.get_poses()[:2,:] - initial_goal_points)))
 
         current_position = r.get_poses()[:2,:]
         current_velocities = unicycle_to_single_integrator(r.velocities, r.get_poses())
@@ -220,7 +220,7 @@ def main():
 
 
         for i in range(1,8):
-            print(f'Step {i+1}')
+            print('Step %d' %(i+1))
             goal_points = np.squeeze(np.swapaxes(test_data,2,3)[:,i,:2,:])
             goal_velocities = np.squeeze(np.swapaxes(test_data,2,3)[:,i,2:,:])
 
@@ -234,11 +234,11 @@ def main():
             pos_vel_log = np.concatenate([pos_vel_log,
                                 np.swapaxes(np.expand_dims(np.expand_dims(current_pos_vel, axis = 0), axis = 0),2,3)], axis = 1)
 
-            print(f'error = {np.linalg.norm(r.get_poses()[:2,:] - goal_points)}')
+            print('error = %f' %(np.linalg.norm(r.get_poses()[:2,:] - goal_points)))
 
             # Always call this function at the end of your scripts!  It will accelerate the
             # execution of your experiment
-            r.call_at_scripts_end()
+            # r.call_at_scripts_end()
 
 
         #------------- intialization end ----------------------
@@ -263,7 +263,7 @@ def main():
 
                 print("------------------------------------------------------------------")
 
-                print(f'GNN execution time = {-curr_time +time.time()}')
+                print('GNN execution time = %f' %(-curr_time +time.time()))
 
                 goal_velocities = np.squeeze(np.swapaxes(prediction,2,3)[:,:,2:,:])
 
@@ -271,7 +271,7 @@ def main():
                 print(prediction.shape)
                 goal_velocities = np.squeeze(np.swapaxes(prediction,2,3)[:,i-8,2:,:])
 
-            print(f'Step {i+1}')
+            print('Step ' %(i+1))
             goal_points = np.squeeze(np.swapaxes(test_data,2,3)[:,i,:2,:])
             #goal_velocities = np.squeeze(np.swapaxes(prediction,2,3)[:,:,2:,:])
 
@@ -288,11 +288,11 @@ def main():
             pos_vel_log = pos_vel_log.astype(dtype=np.float32)
 
 
-            print(f'error = {np.linalg.norm(r.get_poses()[:2,:] - goal_points)}')
+            print('error = %f' %(np.linalg.norm(r.get_poses()[:2,:] - goal_points)))
 
             # Always call this function at the end of your scripts!  It will accelerate the
             # execution of your experiment
-            r.call_at_scripts_end()
+        r.call_at_scripts_end()
 
 
         # np.save(os.path.join(ARGS.log_dir, 'prediction_robotarium_{}.npy'.format(
@@ -304,15 +304,15 @@ def main():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-dir', type=str,
+    parser.add_argument('--data-dir', type=str, default ='data'
                         help='data directory')
     parser.add_argument('--data-transpose', type=int, nargs=4, default=None,
                         help='axes for data transposition')
     parser.add_argument('--data-size', type=int, default=None,
                         help='optional data size cap to use for training')
-    parser.add_argument('--config', type=str,
+    parser.add_argument('--config', type=str, default='config_dynamical.json'
                         help='model config file')
-    parser.add_argument('--log-dir', type=str,
+    parser.add_argument('--log-dir', type=str, default = 'log'
                         help='log directory')
     parser.add_argument('--train-steps', type=int, default=1000,
                         help='number of training steps')
