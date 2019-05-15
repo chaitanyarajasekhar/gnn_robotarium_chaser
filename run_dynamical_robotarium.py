@@ -304,15 +304,15 @@ def main():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-dir', type=str, default ='data'
+    parser.add_argument('--data-dir', type=str, default ='data',
                         help='data directory')
     parser.add_argument('--data-transpose', type=int, nargs=4, default=None,
                         help='axes for data transposition')
     parser.add_argument('--data-size', type=int, default=None,
                         help='optional data size cap to use for training')
-    parser.add_argument('--config', type=str, default='config_dynamical.json'
+    parser.add_argument('--config', type=str, default='config_dynamical.json',
                         help='model config file')
-    parser.add_argument('--log-dir', type=str, default = 'log'
+    parser.add_argument('--log-dir', type=str, default = 'log',
                         help='log directory')
     parser.add_argument('--train-steps', type=int, default=1000,
                         help='number of training steps')
