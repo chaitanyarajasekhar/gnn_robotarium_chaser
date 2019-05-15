@@ -304,7 +304,7 @@ def main():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-dir', type=str, default ='gnn_robotarium_chaser/data',
+    parser.add_argument('--data-dir', type=str, default ='gnn_robotarium_chaser/data/',
                         help='data directory')
     parser.add_argument('--data-transpose', type=int, nargs=4, default=None,
                         help='axes for data transposition')
@@ -312,7 +312,7 @@ if __name__ == '__main__':
                         help='optional data size cap to use for training')
     parser.add_argument('--config', type=str, default='gnn_robotarium_chaser/config_dynamical.json',
                         help='model config file')
-    parser.add_argument('--log-dir', type=str, default = 'gnn_robotarium_chaserlog',
+    parser.add_argument('--log-dir', type=str, default = 'gnn_robotarium_chaser/log/',
                         help='log directory')
     parser.add_argument('--train-steps', type=int, default=1000,
                         help='number of training steps')
