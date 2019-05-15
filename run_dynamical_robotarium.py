@@ -188,7 +188,7 @@ def main():
 
         # Instantiate Robotarium object
         N = test_data.shape[2]
-        r = robotarium.Robotarium(number_of_agents=N, show_figure=True, save_data=False, update_time=0.3)
+        r = robotarium.Robotarium(number_of_agents=N, show_figure=False, save_data=False, update_time=0.3)
 
         # Create barrier certificates to avoid collision
         si_barrier_cert = create_single_integrator_barrier_certificate(N)
